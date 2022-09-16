@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Dysnomia.DownStatus.Common\Dysnomia.DownStatus.Common.csproj" />
+		<ProjectReference Include="..\Dysnomia.DownStatus.Monitoring\Dysnomia.DownStatus.Monitoring.csproj" />
+		<ProjectReference Include="..\Dysnomia.DownStatus.Persistance\Dysnomia.DownStatus.Persistance.csproj" />
+	</ItemGroup>
+
+</Project>
