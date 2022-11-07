@@ -6,7 +6,7 @@ using System.Timers;
 
 namespace Dysnomia.DownStatus.CLI {
 	public class MonitoringHostedService : IHostedService {
-		private const int TIMER_INTERVAL = 5_000; // 5 seconds
+		private const int TIMER_INTERVAL = 10_000; // 10 seconds
 		private const int OLDEST_ITEMS_AMOUNT = 5;
 
 		private readonly IMonitoringService monitoringService;
