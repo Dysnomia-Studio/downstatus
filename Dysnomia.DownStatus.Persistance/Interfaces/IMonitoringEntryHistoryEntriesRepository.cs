@@ -4,5 +4,6 @@ namespace Dysnomia.DownStatus.Persistance.Interfaces {
 	public interface IMonitoringEntryHistoryEntriesRepository {
 		void AppendToHistoryWithoutSaving(MonitoringEntryHistoryEntry entry);
 		Task ApplyHistoryChanges();
+		IEnumerable<MonitoringEntryHistoryEntry?> GetEntriesForHomepage(int amount);
 	}
 }

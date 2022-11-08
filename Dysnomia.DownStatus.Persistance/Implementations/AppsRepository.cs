@@ -1,4 +1,7 @@
-﻿using Dysnomia.DownStatus.Persistance.Interfaces;
+﻿using Dysnomia.DownStatus.Common.Models;
+using Dysnomia.DownStatus.Persistance.Interfaces;
+
+using Microsoft.EntityFrameworkCore;
 
 namespace Dysnomia.DownStatus.Persistance.Implementations {
 	public class AppsRepository : IAppsRepository {
@@ -6,6 +9,14 @@ namespace Dysnomia.DownStatus.Persistance.Implementations {
 
 		public AppsRepository(MonitoringContext context) {
 			this.context = context;
+		}
+
+		public Task<App?> GetByKey(string key) {
+			return context.Apps.FirstOrDefaultAsync(x => x.Key == key);
+		}
+
+		public async Task<string?> GetImageSrc(string key) {
+			return (await GetByKey(key))?.Logo;
 		}
 	}
 }

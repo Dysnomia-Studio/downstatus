@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dysnomia.DownStatus.Monitor
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dysnomia.DownStatus.Persistance", "Dysnomia.DownStatus.Persistance\Dysnomia.DownStatus.Persistance.csproj", "{AC36F268-D700-4DAB-936B-F771919E69DF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dysnomia.DownStatus.WebApp", "Dysnomia.DownStatus.WebApp\Dysnomia.DownStatus.WebApp.csproj", "{848F70EC-4A07-471F-8195-EFB846770F37}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{AC36F268-D700-4DAB-936B-F771919E69DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC36F268-D700-4DAB-936B-F771919E69DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC36F268-D700-4DAB-936B-F771919E69DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{848F70EC-4A07-471F-8195-EFB846770F37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{848F70EC-4A07-471F-8195-EFB846770F37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{848F70EC-4A07-471F-8195-EFB846770F37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{848F70EC-4A07-471F-8195-EFB846770F37}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,21 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background: #212121;
+    color: white;
+}
+
+.main {
+    width: 1000px;
+    max-width: 90%;
+    padding: 1rem;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.main h1 {
+    text-align: center;
+}

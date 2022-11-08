@@ -6,7 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 namespace Dysnomia.DownStatus.Persistance {
 	public static class ConfigureServicesHelper {
 		public static void ConfigureRepositories(this IServiceCollection services) {
-			services.AddSingleton<MonitoringContext>();
+			services.AddTransient<MonitoringContext>();
 
 			services.AddTransient<IAppsRepository, AppsRepository>();
 			services.AddTransient<IMonitoringEntriesRepository, MonitoringEntriesRepository>();

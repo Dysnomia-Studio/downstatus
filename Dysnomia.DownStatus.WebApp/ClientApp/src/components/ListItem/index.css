@@ -1,0 +1,48 @@
+.list-item {
+	margin: 0.5rem;
+	padding: 1.5rem;
+	display: inline-block;
+	width: calc(20% - 1rem);
+	height: 8rem;
+	vertical-align: middle;
+	font-weight: bold;
+	position: relative;
+
+	background-size: cover;
+	background-position: center;
+}
+
+@media (max-width: 1000px) {
+	.list-item {
+		width: calc(25% - 1rem);
+	}
+}
+
+@media (max-width: 800px) {
+	.list-item {
+		width: calc(33% - 1rem);
+	}
+}
+
+@media (max-width: 600px) {
+	.list-item {
+		width: calc(50% - 1rem);
+	}
+}
+
+.unhealthy p {
+	background: #d35400;
+}
+.healthy p {
+	background: #2ecc71;
+}
+
+.list-item p {
+	position: absolute;
+	right: 0.25rem;
+	bottom: -0.5rem;
+	padding: 0.25rem 0.5rem;
+	border-radius: 50%;
+	color: white;
+	border: 2px solid #212121;
+}

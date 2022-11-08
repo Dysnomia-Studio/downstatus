@@ -3,6 +3,7 @@ using System;
 using Dysnomia.DownStatus.Persistance;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Dysnomia.DownStatus.Persistance.Migrations
 {
     [DbContext(typeof(MonitoringContext))]
-    partial class MonitoringContextModelSnapshot : ModelSnapshot
+    [Migration("20221108162300_Logo")]
+    partial class Logo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

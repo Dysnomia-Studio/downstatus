@@ -16,5 +16,15 @@ namespace Dysnomia.DownStatus.Persistance.Implementations {
 		public async Task ApplyHistoryChanges() {
 			await context.SaveChangesAsync();
 		}
+
+		public IEnumerable<MonitoringEntryHistoryEntry?> GetEntriesForHomepage(int amount) {
+			return context.MonitoringHistory
+				.GroupBy(x => x.MonitoringEntryAppId, (_, x) => x.OrderByDescending(x => x.Date).FirstOrDefault())
+				.AsEnumerable()
+				.OrderByDescending(x => x.Status)
+				.ThenByDescending(x => x.Date)
+				.Take(amount)
+				.ToList();
+		}
 	}
 }
