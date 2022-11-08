@@ -1,4 +1,5 @@
 
+using Dysnomia.Common.Stats;
 using Dysnomia.DownStatus.Business;
 using Dysnomia.DownStatus.CLI;
 using Dysnomia.DownStatus.Common;
@@ -43,6 +44,15 @@ namespace Dysnomia.DownStatus.WebApp {
 			app.UseStaticFiles();
 			app.UseRouting();
 
+			if (!app.Environment.IsEnvironment("Testing")) {
+				app.Use(async (context, next) => {
+					StatsRecorder.PrepareVisit(context);
+
+					await next();
+
+					StatsRecorder.NewVisit(context);
+				});
+			}
 
 			app.MapControllerRoute(
 				name: "default",
