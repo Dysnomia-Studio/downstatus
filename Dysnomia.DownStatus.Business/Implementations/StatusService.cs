@@ -4,7 +4,7 @@ using Dysnomia.DownStatus.Persistance.Interfaces;
 
 namespace Dysnomia.DownStatus.Business.Implementations {
 	public class StatusService : IStatusService {
-		public const int HOMEPAGE_APPS_AMOUNT = 30;
+		public const int MAX_RETURN_APPS = 30;
 
 		private readonly IAppsRepository appsRepository;
 		private readonly IMonitoringEntriesRepository monitoringEntriesRepository;
@@ -20,19 +20,35 @@ namespace Dysnomia.DownStatus.Business.Implementations {
 			try {
 				List<MinimalAppStatusDto> statuses = new();
 
-				foreach (var entry in monitoringEntryHistoryRepository.GetEntriesForHomepage(HOMEPAGE_APPS_AMOUNT)) {
+				foreach (var entry in monitoringEntryHistoryRepository.GetEntriesForHomepage(MAX_RETURN_APPS)) {
 					if (entry == null) {
 						continue;
 					}
 
 					var app = await appsRepository.GetByKey(entry.MonitoringEntryAppId);
+					statuses.Add(MinimalAppStatusDto.FromModel(entry, app));
+				}
 
-					statuses.Add(new MinimalAppStatusDto {
-						AppId = entry.MonitoringEntryAppId,
-						AppName = app.Name,
-						Status = entry.Status.ToString(),
-						Logo = app.Logo != null ? $"/image/{app.Key}" : null
-					});
+				return statuses;
+			} catch (Exception e) {
+				Console.WriteLine(e.Message);
+				Console.WriteLine(e.StackTrace);
+
+				return null;
+			}
+		}
+
+		public async Task<IEnumerable<MinimalAppStatusDto>> Search(string str) {
+			try {
+				List<MinimalAppStatusDto> statuses = new();
+
+				foreach (var entry in monitoringEntryHistoryRepository.Search(str, MAX_RETURN_APPS)) {
+					if (entry == null) {
+						continue;
+					}
+
+					var app = await appsRepository.GetByKey(entry.MonitoringEntryAppId);
+					statuses.Add(MinimalAppStatusDto.FromModel(entry, app));
 				}
 
 				return statuses;

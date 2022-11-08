@@ -23,5 +23,21 @@ namespace Dysnomia.DownStatus.WebApp.Controllers {
 
 			return Ok(data);
 		}
+
+		[HttpGet("search/{str}")]
+		public async Task<ActionResult<IEnumerable<MinimalAppStatusDto>>> Search(string str) {
+			if (str.LongCount() > 40) {
+				return BadRequest();
+			}
+
+			var data = await _statusService.Search(str);
+
+
+			if (data == null) {
+				return NoContent();
+			}
+
+			return Ok(data);
+		}
 	}
 }

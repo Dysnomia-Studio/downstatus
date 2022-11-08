@@ -10,6 +10,10 @@ export default function useStatusHomepage(searchTerm) {
 
 		(async() => {
 			const res = await fetch(`/api/status/search/${searchTerm}`);
+			if(res.status !== 200) {
+				return;
+			}
+
 			const data = await res.json();
 			data.sort((a, b) => {
 				if(a.appName > b.appName) {
