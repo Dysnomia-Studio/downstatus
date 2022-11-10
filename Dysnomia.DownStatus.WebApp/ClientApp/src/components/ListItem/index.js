@@ -7,7 +7,7 @@ export default function ListItem({ additionalData, className, element }) {
 	}
 
 	return (
-		<div className={className + ' list-item'} style={style}>
+		<div className={className + ' list-item'} style={style} aria-label={element.appName}>
 			{!element.logo && element.appName}
 			{additionalData}
 		</div>
