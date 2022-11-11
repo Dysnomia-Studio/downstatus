@@ -12,8 +12,8 @@ namespace Dysnomia.DownStatus.WebApp.Controllers {
 		}
 
 		[HttpGet("{serviceKey}")]
-		[ResponseCache(Duration = 3600)] // Cache this picture for an hour
-										 // TODO: serverside cache
+		[ResponseCache(Duration = 604800)] // Cache this picture for a week clientside
+										   // TODO: serverside cache
 		public async Task<IActionResult> GetImage(string serviceKey) {
 			try {
 				(byte[] content, string contentType, string name) = await _imagesService.GetImageFromServiceKey(serviceKey);
