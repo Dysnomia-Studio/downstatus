@@ -21,13 +21,12 @@ export default function Home({ useStatusHomepage, useSearch }) {
 
 	const healthyData = statuses.filter((x) => x.status !== 'Unhealthy');
 	return (
-		<div className="main">
-			<h1>Downstat.us</h1>
+		<>
 			<Searchbar onChange={setSearchData} />
 
 			{unhealthyDOM}
 
 			{healthyData.map(x => <ListItem element={x} key={x.appId} className="healthy" additionalData={<p>✓</p>} />)}
-		</div>
+		</>
 	);
 }
