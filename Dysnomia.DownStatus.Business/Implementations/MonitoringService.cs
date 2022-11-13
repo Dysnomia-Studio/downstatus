@@ -43,5 +43,15 @@ namespace Dysnomia.DownStatus.Business.Implementations {
 				var test = "";
 			}
 		}
+
+		public async Task CleanUselessEntries() {
+			try {
+				await monitoringEntryHistoryRepository.CleanUselessEntries();
+				var test = "";
+			} catch (Exception e) {
+				Console.WriteLine(e.Message);
+				Console.WriteLine(e.StackTrace);
+			}
+		}
 	}
 }
