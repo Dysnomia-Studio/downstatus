@@ -16,7 +16,7 @@ namespace Dysnomia.DownStatus.Persistance.Implementations {
 
 			return context.MonitoringEntry
 				.Include(x => x.History)
-				.Where(x => x.History.Count == 0 || x.History.Max(h => h.Date) < minimalDate)
+				.Where(x => x.History.Count() == 0 || x.History.Max(h => h.Date) < minimalDate)
 				.OrderByDescending(x => x.History.Max(h => h.Date))
 				.Take(amount)
 				.AsAsyncEnumerable();

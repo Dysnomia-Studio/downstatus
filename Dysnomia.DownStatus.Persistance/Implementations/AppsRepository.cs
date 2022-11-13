@@ -15,6 +15,10 @@ namespace Dysnomia.DownStatus.Persistance.Implementations {
 			return context.Apps.FirstOrDefaultAsync(x => x.Key == key);
 		}
 
+		public Task<App?> GetByKeyWithSubEntities(string key) {
+			return context.Apps.Include(x => x.MonitoringEntries).ThenInclude(x => x.History).FirstOrDefaultAsync(x => x.Key == key);
+		}
+
 		public async Task<string?> GetImageSrc(string key) {
 			return (await GetByKey(key))?.Logo;
 		}

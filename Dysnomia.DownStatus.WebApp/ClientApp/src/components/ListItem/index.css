@@ -11,6 +11,8 @@
     background-size: 100%;
     background-repeat: no-repeat;
 	background-position: center;
+
+	color: white;
 }
 
 @media (max-width: 1000px) {
@@ -31,14 +33,14 @@
 	}
 }
 
-.unhealthy p {
+.unhealthy p, .details-unhealthy {
 	background: #d35400;
 }
-.healthy p {
+.healthy p, .details-healthy {
 	background: #2ecc71;
 }
 
-.list-item p {
+.list-item p, .details-unhealthy, .details-healthy {
 	position: absolute;
 	right: 0.25rem;
 	bottom: -0.5rem;

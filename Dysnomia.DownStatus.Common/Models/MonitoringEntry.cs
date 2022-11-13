@@ -7,6 +7,6 @@ namespace Dysnomia.DownStatus.Common.Models {
 		public string Name { get; set; }
 		public string Target { get; set; }
 		public MonitoringType Type { get; set; }
-		public List<MonitoringEntryHistoryEntry> History { get; set; }
+		public IEnumerable<MonitoringEntryHistoryEntry> History { get; set; }
 	}
 }
