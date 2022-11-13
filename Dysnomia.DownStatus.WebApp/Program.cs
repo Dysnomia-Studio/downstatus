@@ -29,6 +29,7 @@ namespace Dysnomia.DownStatus.WebApp {
 			services.ConfigureBusinessServices();
 			services.ConfigureJobsServices();
 
+			services.AddHostedService<CleanerHostedService>();
 			services.AddHostedService<MonitoringHostedService>();
 
 			services.AddControllersWithViews();

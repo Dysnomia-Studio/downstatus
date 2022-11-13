@@ -40,7 +40,7 @@ namespace Dysnomia.DownStatus.Business.Implementations {
 
 				await monitoringEntryHistoryRepository.ApplyHistoryChanges();
 
-				Console.WriteLine($"Updated {amount} entries !");
+				//Console.WriteLine($"Updated {amount} entries !");
 			} catch (Exception e) {
 				Console.WriteLine(e.Message);
 				Console.WriteLine(e.StackTrace);
