@@ -39,15 +39,19 @@ namespace Dysnomia.DownStatus.Business.Implementations {
 				}
 
 				await monitoringEntryHistoryRepository.ApplyHistoryChanges();
+
+				Console.WriteLine($"Updated {amount} entries !");
 			} catch (Exception e) {
-				var test = "";
+				Console.WriteLine(e.Message);
+				Console.WriteLine(e.StackTrace);
 			}
 		}
 
 		public async Task CleanUselessEntries() {
 			try {
 				await monitoringEntryHistoryRepository.CleanUselessEntries();
-				var test = "";
+
+				Console.WriteLine($"Useless entries have been cleaned");
 			} catch (Exception e) {
 				Console.WriteLine(e.Message);
 				Console.WriteLine(e.StackTrace);
