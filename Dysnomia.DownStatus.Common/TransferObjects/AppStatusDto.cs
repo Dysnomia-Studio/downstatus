@@ -16,18 +16,32 @@ namespace Dysnomia.DownStatus.Common.TransferObjects {
 				Date = historyEntry.Date,
 				TargetName = monitoringEntry.Name,
 				Status = historyEntry.Status.ToString()
-			}));
-			statusList = statusList
-				.OrderBy(x => x.Date)
-				.GroupBy(x => new { x.TargetName, x.Status })
-				.Select(x => x.First());
+			})).ToList();
+			statusList = statusList.OrderBy(x => x.TargetName)
+				.ThenBy(x => x.Date)
+				.Where((x, index) => {
+					if (index == 0) {
+						return true;
+					} else if (index > 0) {
+						var previous = statusList.ElementAt(index - 1);
+						if (previous.TargetName != x.TargetName) {
+							return true;
+						}
+
+						if (previous.Status != x.Status) {
+							return true;
+						}
+					}
+
+					return false;
+				}).ToList();
 
 			return new AppStatusDto {
 				AppId = app.Key,
 				AppName = app.Name,
 				Description = app.Description,
 				Logo = app.Logo != null ? $"/image/{app.Key}" : null,
-				StatusList = statusList.Take(15),
+				StatusList = statusList.OrderByDescending(x => x.Date).Take(15),
 				Targets = app.MonitoringEntries.Select(x => new AppStatusDtoTarget {
 					Name = x.Name,
 					Target = x.Target,
