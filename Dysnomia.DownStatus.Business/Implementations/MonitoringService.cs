@@ -26,7 +26,7 @@ namespace Dysnomia.DownStatus.Business.Implementations {
 
 		public async Task UpdateOldestEntries(int amount) {
 			try {
-				await foreach (var entry in monitoringEntriesRepository.GetOldestUpdatedEntries(amount)) {
+				foreach (var entry in await monitoringEntriesRepository.GetOldestUpdatedEntries(amount)) {
 					var (status, message) = await Monitore(entry);
 
 					monitoringEntryHistoryRepository.AppendToHistoryWithoutSaving(new MonitoringEntryHistoryEntry() {

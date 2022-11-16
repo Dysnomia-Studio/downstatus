@@ -2,6 +2,6 @@
 
 namespace Dysnomia.DownStatus.Persistance.Interfaces {
 	public interface IMonitoringEntriesRepository {
-		IAsyncEnumerable<MonitoringEntry> GetOldestUpdatedEntries(int amount);
+		Task<IEnumerable<MonitoringEntry>> GetOldestUpdatedEntries(int amount);
 	}
 }

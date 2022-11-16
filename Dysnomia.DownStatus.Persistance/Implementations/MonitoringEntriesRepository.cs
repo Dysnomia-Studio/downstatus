@@ -11,15 +11,15 @@ namespace Dysnomia.DownStatus.Persistance.Implementations {
 			this.context = context;
 		}
 
-		public IAsyncEnumerable<MonitoringEntry> GetOldestUpdatedEntries(int amount) {
+		public async Task<IEnumerable<MonitoringEntry>> GetOldestUpdatedEntries(int amount) {
 			var minimalDate = DateTime.UtcNow.AddMinutes(-5);
 
-			return context.MonitoringEntry
+			return await context.MonitoringEntry
 				.Include(x => x.History)
 				.Where(x => x.History.Count() == 0 || x.History.Max(h => h.Date) < minimalDate)
 				.OrderByDescending(x => x.History.Max(h => h.Date))
 				.Take(amount)
-				.AsAsyncEnumerable();
+				.ToListAsync();
 		}
 	}
 }
