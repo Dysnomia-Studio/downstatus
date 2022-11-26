@@ -27,15 +27,20 @@ namespace Dysnomia.DownStatus.Business.Implementations {
 		public async Task UpdateOldestEntries(int amount) {
 			try {
 				foreach (var entry in await monitoringEntriesRepository.GetOldestUpdatedEntries(amount)) {
-					var (status, message) = await Monitore(entry);
+					try {
+						var (status, message) = await Monitore(entry);
 
-					monitoringEntryHistoryRepository.AppendToHistoryWithoutSaving(new MonitoringEntryHistoryEntry() {
-						MonitoringEntryAppId = entry.AppId,
-						MonitoringEntryName = entry.Name,
-						Date = DateTime.UtcNow,
-						Status = status,
-						Message = message
-					});
+						monitoringEntryHistoryRepository.AppendToHistoryWithoutSaving(new MonitoringEntryHistoryEntry() {
+							MonitoringEntryAppId = entry.AppId,
+							MonitoringEntryName = entry.Name,
+							Date = DateTime.UtcNow,
+							Status = status,
+							Message = message
+						});
+					} catch (Exception e) {
+						Console.WriteLine(e.Message);
+						Console.WriteLine(e.StackTrace);
+					}
 				}
 
 				await monitoringEntryHistoryRepository.ApplyHistoryChanges();
