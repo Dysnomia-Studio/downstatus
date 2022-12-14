@@ -10,10 +10,10 @@ ARG GHP_TOKEN
 # Build Project
 COPY . ./
 
-RUN dotnet sonarscanner begin /k:"downstatus" /d:sonar.host.url="$SONAR_HOST_URL" /d:sonar.login="$SONAR_TOKEN" /d:sonar.cs.opencover.reportsPaths="**/coverage.opencover.xml" /d:sonar.coverage.exclusions="**Test*.cs" /d:sonar.branch.name="$GITHUB_BRANCH"
+RUN dotnet sonarscanner begin /k:"downstatus" /d:sonar.host.url="$SONAR_HOST_URL" /d:sonar.login="$SONAR_TOKEN" /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml /d:sonar.coverage.exclusions="**Test*.cs" /d:sonar.branch.name="$GITHUB_BRANCH"
 RUN dotnet restore Dysnomia.DownStatus.sln --ignore-failed-sources /p:EnableDefaultItems=false
 RUN dotnet publish Dysnomia.DownStatus.sln --no-restore -c Release -o out
-RUN dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
+RUN dotnet-coverage collect 'dotnet test --no-build --verbosity normal' -f xml  -o 'coverage.xml'
 RUN dotnet sonarscanner end /d:sonar.login="$SONAR_TOKEN"
 
 # Build runtime image
