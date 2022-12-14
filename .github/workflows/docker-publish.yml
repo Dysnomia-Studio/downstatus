@@ -69,7 +69,7 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
           build-args: |
-            GITHUB_BRANCH=${GITHUB_REF##*/}
+            GITHUB_BRANCH=${{ GITHUB_REF##*/ }}
             GHP_TOKEN=${{ secrets.GHP_TOKEN }}
             GHP_USER=${{ secrets.GHP_USER }}
             SONAR_HOST_URL=${{ secrets.SONAR_HOST_URL }}
