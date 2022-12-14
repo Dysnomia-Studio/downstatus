@@ -5,7 +5,7 @@ using Microsoft.Extensions.Hosting;
 using System.Timers;
 
 namespace Dysnomia.DownStatus.CLI {
-	public class CleanerHostedService : IHostedService {
+	public class CleanerHostedService : IHostedService, IDisposable {
 		private const int CLEAN_TIMER_INTERVAL = 3_600_000; // 1 hour
 
 		private readonly IMonitoringService monitoringService;
@@ -33,6 +33,10 @@ namespace Dysnomia.DownStatus.CLI {
 			return Task.Run(() => {
 				cleanTimer.Stop();
 			}, cancellationToken);
+		}
+
+		public void Dispose() {
+			cleanTimer.Dispose();
 		}
 	}
 }

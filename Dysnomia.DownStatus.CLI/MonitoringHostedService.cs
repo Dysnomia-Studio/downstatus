@@ -5,7 +5,7 @@ using Microsoft.Extensions.Hosting;
 using System.Timers;
 
 namespace Dysnomia.DownStatus.CLI {
-	public class MonitoringHostedService : IHostedService {
+	public class MonitoringHostedService : IHostedService, IDisposable {
 		private const int MONITORING_TIMER_INTERVAL = 10_000; // 10 seconds
 		private const int OLDEST_ITEMS_AMOUNT = 5;
 
@@ -34,6 +34,10 @@ namespace Dysnomia.DownStatus.CLI {
 			return Task.Run(() => {
 				monitoringTimer.Stop();
 			}, cancellationToken);
+		}
+
+		public void Dispose() {
+			monitoringTimer.Dispose();
 		}
 	}
 }
