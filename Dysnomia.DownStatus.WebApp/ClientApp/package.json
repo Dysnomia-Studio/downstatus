@@ -7,8 +7,6 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.3.0",
-    "react-scripts": "^5.0.1",
-    "rimraf": "^3.0.2",
     "workbox-background-sync": "^6.5.3",
     "workbox-broadcast-update": "^6.5.3",
     "workbox-cacheable-response": "^6.5.3",
@@ -31,6 +29,8 @@
     "eslint-plugin-jsx-a11y": "^6.6.0",
     "eslint-plugin-react": "^7.30.1",
     "nan": "^2.16.0",
+    "react-scripts": "^5.0.1",
+    "rimraf": "^3.0.2",
     "typescript": "^4.7.4"
   },
   "overrides": {
