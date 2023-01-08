@@ -7,7 +7,9 @@ using Dysnomia.DownStatus.Monitoring;
 using Dysnomia.DownStatus.Persistance;
 
 namespace Dysnomia.DownStatus.WebApp {
+#pragma warning disable S1118 // Utility classes should not have public constructors
 	public class Program {
+#pragma warning restore S1118 // Utility classes should not have public constructors
 		public static void Main(string[] args) {
 			var rawConfig = new ConfigurationBuilder()
 				.SetBasePath(Directory.GetCurrentDirectory())
@@ -52,7 +54,9 @@ namespace Dysnomia.DownStatus.WebApp {
 
 					await next();
 
+#pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
 					StatsRecorder.NewVisit(context);
+#pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
 				});
 			}
 
