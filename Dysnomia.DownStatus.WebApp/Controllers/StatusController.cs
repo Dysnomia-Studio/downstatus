@@ -44,7 +44,6 @@ namespace Dysnomia.DownStatus.WebApp.Controllers {
 		public async Task<ActionResult<AppStatusDto>> GetDetailedStatus(string key) {
 			var data = await _statusService.GetByKey(key);
 
-
 			if (data == null) {
 				return NoContent();
 			}

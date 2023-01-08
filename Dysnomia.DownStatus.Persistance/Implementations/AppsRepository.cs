@@ -11,6 +11,10 @@ namespace Dysnomia.DownStatus.Persistance.Implementations {
 			this.context = context;
 		}
 
+		public Task<bool> Exists(string key) {
+			return context.Apps.AnyAsync(x => x.Key == key);
+		}
+
 		public Task<App?> GetByKey(string key) {
 			return context.Apps.FirstOrDefaultAsync(x => x.Key == key);
 		}

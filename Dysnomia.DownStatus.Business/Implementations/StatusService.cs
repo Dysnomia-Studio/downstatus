@@ -16,7 +16,13 @@ namespace Dysnomia.DownStatus.Business.Implementations {
 			this.monitoringEntryHistoryRepository = monitoringEntryHistoryRepository;
 		}
 
-		public async Task<AppStatusDto> GetByKey(string key) {
+		public async Task<AppStatusDto?> GetByKey(string key) {
+			if (!await appsRepository.Exists(key)) {
+				return null;
+			}
+
+			await monitoringEntryHistoryRepository.CleanUselessEntriesForApp(key);
+
 			var app = await appsRepository.GetByKeyWithSubEntities(key);
 
 			return AppStatusDto.FromModel(app);
