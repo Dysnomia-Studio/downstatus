@@ -13,6 +13,7 @@ namespace Dysnomia.DownStatus.WebApp {
 		public static void Main(string[] args) {
 			var rawConfig = new ConfigurationBuilder()
 				.SetBasePath(Directory.GetCurrentDirectory())
+				.AddEnvironmentVariables()
 				.AddJsonFile("appsettings.json")
 				.AddUserSecrets<Program>()
 				.Build();
