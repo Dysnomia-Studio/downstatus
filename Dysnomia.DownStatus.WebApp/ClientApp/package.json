@@ -6,7 +6,7 @@
     "http-proxy-middleware": "^2.0.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.11.0",
+    "react-router-dom": "^6.14.1",
     "workbox-background-sync": "^7.0.0",
     "workbox-broadcast-update": "^7.0.0",
     "workbox-cacheable-response": "^7.0.0",
