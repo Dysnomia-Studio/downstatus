@@ -16,7 +16,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="Dysnomia.Common.Stats" Version="1.5.0" />
-		<PackageReference Include="Microsoft.AspNetCore.SpaProxy" Version="7.0.10" />
+		<PackageReference Include="Microsoft.AspNetCore.SpaProxy" Version="7.0.11" />
 	</ItemGroup>
 
 	<ItemGroup>
